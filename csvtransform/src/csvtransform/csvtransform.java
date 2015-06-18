@@ -17,9 +17,10 @@ public class csvtransform {
      * @param args the command line arguments
      */
     
+    //Function to put the new content in the new files
     public static void writeContent(String nameFile, String newLine) throws IOException
     {
-      File newFile = new File ("temperaturasFormato/"+nameFile);
+      File newFile = new File ("temperaturasFormato/"+nameFile+".csv");
       FileWriter w = new FileWriter(newFile,true);
       BufferedWriter bw = new BufferedWriter(w);
       //New file creation if it does not exist
@@ -32,22 +33,22 @@ public class csvtransform {
       bw.close();  //Close buffer
     }
     
+    //Function to read the content of each line
     public static void readContent(String nameFile) throws FileNotFoundException, IOException 
     {
           String line,newLine;
           FileReader file = new FileReader("temperaturas/"+nameFile);
           BufferedReader buffer = new BufferedReader(file);
           while((line = buffer.readLine())!=null) 
-          {
-              
-              newLine=nameFile.substring(0,4)+","+nameFile.substring(4,6)+","+line.replace(" ", ",");
-              writeContent(nameFile,newLine);
+          {   
+              newLine=line.replace(" ", ",");
+              writeContent(nameFile.substring(0, 6),newLine);
               //System.out.println(newLine);//System to see printing
           }
           buffer.close();//Close buffer
     }
     
-    
+    //Function to see all of files
     public static void runningFiles() throws IOException
     {//Loop to go over all of files, since 1854 to 2014, 7º month
       int i=0,j=0;
@@ -62,15 +63,12 @@ public class csvtransform {
                     readContent(i+"0"+j+"15"); 
                 else
                  readContent(i+""+j+"15"); 
-               
     }
     
-
-
     
     public static void main(String[] args) throws IOException 
     {
-        // TODO code application logic here
-        runningFiles();
+        //Process to adequate csv style
+        runningFiles();        
     }
 }
