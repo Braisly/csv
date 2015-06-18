@@ -36,14 +36,15 @@ public class csvtransform {
     //Function to read the content of each line
     public static void readContent(String nameFile) throws FileNotFoundException, IOException 
     {
-          String line,newLine;
+          String line,newLine,aux;
           FileReader file = new FileReader("temperaturas/"+nameFile);
           BufferedReader buffer = new BufferedReader(file);
           while((line = buffer.readLine())!=null) 
           {   
-              newLine=line.replace(" ", ",");
+              newLine=line.substring(0, line.lastIndexOf(" "));//Select three parameters in the line
+              newLine=newLine.replace(" ", ",");
               writeContent(nameFile.substring(0, 6),newLine);
-              //System.out.println(newLine);//System to see printing
+              //System.out.println();//System to see printing
           }
           buffer.close();//Close buffer
     }
