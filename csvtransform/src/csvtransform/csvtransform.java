@@ -18,7 +18,7 @@ public class csvtransform {
      */
     
     //Function to put the new content in the new files
-    public static void writeContent(String nameFile, String newLine) throws IOException
+    private static void writeContent(String nameFile, String newLine) throws IOException
     {
       File newFile = new File ("temperaturasFormato/"+nameFile+".csv");
       FileWriter w = new FileWriter(newFile,true);
@@ -34,7 +34,7 @@ public class csvtransform {
     }
     
     //Function to read the content of each line
-    public static void readContent(String nameFile) throws FileNotFoundException, IOException 
+    private static void readContent(String nameFile) throws FileNotFoundException, IOException 
     {
           String line,newLine,aux;
           FileReader file = new FileReader("temperaturas/"+nameFile);
@@ -50,7 +50,7 @@ public class csvtransform {
     }
     
     //Function to see all of files
-    public static void runningFiles() throws IOException
+    private static void runningFiles() throws IOException
     {//Loop to go over all of files, since 1854 to 2014, 7º month
       int i=0,j=0;
        
